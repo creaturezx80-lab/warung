@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayam Bakar Sukarti</title>
+
+<style>
+:root{
+  --bg:#0f3d2e;
+  --card:#1b5e44;
+  --accent:#7cffb2;
+  --text:#eafff2;
+  --muted:#b7e4c7;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif}
+
+body{
+  background:
+    linear-gradient(rgba(15,61,46,.9), rgba(15,61,46,.95)),
+    url('https://images.unsplash.com/photo-1501785888041-af3ef285b470');
+  background-size:cover;
+  background-attachment:fixed;
+  color:var(--text);
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px 80px;
+  animation:fadeIn .8s ease;
+}
+
+/* HEADER */
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:30px;
+}
+.brand h1{font-size:40px}
+.brand span{color:var(--accent)}
+.brand p{color:var(--muted);margin-top:6px}
+
+.logo{
+  width:180px;height:180px;border-radius:50%;
+  background:radial-gradient(circle,#1b5e44,#0f3d2e);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  border:3px solid var(--accent);
+  animation:float 4s ease-in-out infinite;
+}
+.logo b{font-size:56px;letter-spacing:6px;color:var(--accent)}
+.logo small{font-size:12px;color:var(--muted)}
+
+/* BUTTON */
+.actions{margin-top:20px}
+.actions button{
+  padding:14px 24px;
+  border:none;border-radius:16px;
+  font-weight:bold;cursor:pointer;
+  margin-right:10px;
+  transition:.3s;
+}
+.actions button:hover{transform:translateY(-2px)}
+.wa{background:#25d366;color:#083b22}
+.ig{background:#833ab4;color:#fff}
+
+/* SECTION */
+section{
+  margin-top:60px;
+  animation:slideUp .8s ease;
+}
+section h2{
+  margin-bottom:16px;
+  color:var(--accent);
+}
+
+/* MENU */
+.menu{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:16px;
+}
+.item{
+  background:var(--card);
+  padding:16px 18px;
+  border-radius:16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  transition:.3s;
+}
+.item:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 25px rgba(0,0,0,.35);
+}
+.item span{font-weight:bold}
+
+/* CABANG */
+.cabang{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:16px;
+}
+.cabang-card{
+  background:var(--card);
+  padding:18px;
+  border-radius:16px;
+  transition:.3s;
+}
+.cabang-card:hover{transform:translateY(-4px)}
+.cabang-card a{
+  color:var(--accent);
+  text-decoration:none;
+  display:inline-block;
+  margin-top:6px;
+}
+
+/* FLOAT WA */
+.float-wa{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25d366;
+  color:#083b22;
+  padding:14px 18px;
+  border-radius:50px;
+  font-weight:bold;
+  cursor:pointer;
+  animation:pulse 2s infinite;
+}
+
+/* POPUP */
+.popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+.popup-box{
+  background:var(--card);
+  padding:24px;
+  border-radius:18px;
+  width:340px;
+  text-align:center;
+  position:relative;
+}
+.close{
+  position:absolute;
+  top:10px;
+  right:14px;
+  cursor:pointer;
+}
+.popup button{
+  width:100%;
+  margin:6px 0;
+  padding:10px;
+  border:none;
+  border-radius:14px;
+  background:#25d366;
+  font-weight:bold;
+  color:#083b22;
+}
+
+/* ANIMATION */
+@keyframes float{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+  100%{transform:translateY(0)}
+}
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+@keyframes slideUp{
+  from{transform:translateY(20px);opacity:0}
+  to{transform:translateY(0);opacity:1}
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(37,211,102,.7)}
+  70%{box-shadow:0 0 0 15px rgba(37,211,102,0)}
+  100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
+}
+
+@media(max-width:700px){
+  .header{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="brand">
+    <h1>Ayam Bakar <span>Sukarti</span></h1>
+    <p id="status"></p>
+    <div class="actions">
+      <button class="wa" onclick="openWA()">Order WhatsApp</button>
+      <button class="ig" onclick="location.href='https://www.instagram.com/mfaridghufron'">Instagram</button>
+    </div>
+  </div>
+
+  <div class="logo">
+    <b>ABS</b>
+    <small>Menerima Pesanan</small>
+  </div>
+</div>
+
+<!-- MENU SATUAN -->
+<section>
+<h2>🍗 Menu Satuan</h2>
+<div class="menu">
+  <div class="item"><span>Ayam Bakar Dada</span><b>16k</b></div>
+  <div class="item"><span>Ayam Bakar Paha</span><b>16k</b></div>
+  <div class="item"><span>Ayam Goreng Dada</span><b>16k</b></div>
+  <div class="item"><span>Ayam Goreng Paha</span><b>16k</b></div>
+  <div class="item"><span>Ayam Penyet Dada</span><b>16k</b></div>
+  <div class="item"><span>Ayam Penyet Paha</span><b>16k</b></div>
+  <div class="item"><span>Lele Goreng</span><b>12k</b></div>
+  <div class="item"><span>Lele Bakar</span><b>13k</b></div>
+  <div class="item"><span>Nila Goreng</span><b>17k</b></div>
+  <div class="item"><span>Nila Bakar</span><b>18k</b></div>
+  <div class="item"><span>Tahu</span><b>2k</b></div>
+  <div class="item"><span>Tempe</span><b>2k</b></div>
+</div>
+</section>
+
+<!-- NASI BOX -->
+<section>
+<h2>📦 Menu Nasi Box</h2>
+<div class="menu">
+  <div class="item"><span>Ayam + Nasi Box</span><b>23k</b></div>
+  <div class="item"><span>Ayam + Nasi + Kerupuk</span><b>24k</b></div>
+  <div class="item"><span>Ayam + Nasi + Kerupuk + Tahu Tempe</span><b>27k</b></div>
+  <div class="item"><span>Ayam + Nasi + Kerupuk + Tahu Tempe + Pisang</span><b>29k</b></div>
+</div>
+</section>
+
+<!-- NASI -->
+<section>
+<h2>🍚 Menu Nasi</h2>
+<div class="menu">
+  <div class="item"><span>Nasi Putih</span><b>5k</b></div>
+  <div class="item"><span>Nasi Uduk</span><b>6k</b></div>
+</div>
+</section>
+
+<!-- MINUMAN -->
+<section>
+<h2>🥤 Minuman</h2>
+<div class="menu">
+  <div class="item"><span>Es Teh Manis</span><b>5k</b></div>
+  <div class="item"><span>Es Teh Tawar</span><b>3k</b></div>
+  <div class="item"><span>Teh Manis Anget</span><b>3k</b></div>
+  <div class="item"><span>Teh Tawar Anget</span><b>2k</b></div>
+</div>
+</section>
+
+<!-- CABANG -->
+<section>
+<h2>📍 Cabang</h2>
+<div class="cabang">
+  <div class="cabang-card">
+    <b>Penggilingan Kampung Jembatan</b><br>
+    <a href="https://maps.app.goo.gl/Y1bJ6ykJP1YQJsuy6" target="_blank">Google Maps</a>
+  </div>
+  <div class="cabang-card">
+    <b>Jalan Delima Belakang Holland Bakery</b><br>
+    <a href="https://maps.app.goo.gl/5Z62mqLYJn2Jf5Z6A" target="_blank">Google Maps</a>
+  </div>
+  <div class="cabang-card">
+    <b>Jalan Amalia</b><br>
+    <a href="https://maps.app.goo.gl/RJM6Guf3L3nDK6Ax5" target="_blank">Google Maps</a>
+  </div>
+</div>
+</section>
+
+</div>
+
+<div class="float-wa" onclick="openWA()">💬 Order WA</div>
+
+<!-- POPUP WA -->
+<div class="popup" id="popupWA">
+  <div class="popup-box">
+    <span class="close" onclick="closeWA()">✕</span>
+
+    <button onclick="goWA('6289624580005','Farid')">Penggilingan – Farid</button>
+    <button onclick="goWA('6285779942210','Sukarti')">Penggilingan – Sukarti</button>
+
+    <button onclick="goWA('6281214448778','Zaki')">Delima – Zaki</button>
+    <button onclick="goWA('6285135464653','Dian')">Delima – Dian</button>
+
+    <button onclick="goWA('6281514174288','Hartono')">Amalia – Hartono</button>
+    <button onclick="goWA('6281574774468','Cakto')">Amalia – Cakto</button>
+  </div>
+</div>
+
+<script>
+const h=new Date().getHours();
+document.getElementById("status").innerHTML =
+(h>=9&&h<=21)?"🟢 Buka 09.00 – 21.00":"🔴 Tutup";
+
+function openWA(){
+  document.getElementById("popupWA").style.display="flex";
+}
+function closeWA(){
+  document.getElementById("popupWA").style.display="none";
+}
+function goWA(no,nama){
+  const msg=encodeURIComponent(
+    "Halo Ayam Bakar Sukarti 🍗\nAdmin: "+nama+
+    "\nSaya ingin pesan:\nJumlah:\nAmbil / Antar:\nTanggal:"
+  );
+  window.location.href="https://wa.me/"+no+"?text="+msg;
+}
+</script>
+
+</body>
+</html>
